@@ -26,8 +26,6 @@ export const useMemos = () => {
   const [sortBy, setSortBy] = useState<SortBy>(loadSortBy)
 
   useEffect(() => {
-    setLoading(true)
-    setLoadError(null)
     listMemos()
       .then(data => setMemos(data))
       .catch(error => {

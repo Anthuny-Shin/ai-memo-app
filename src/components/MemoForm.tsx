@@ -137,6 +137,16 @@ export default function MemoForm({ isOpen, onClose, onSubmit, editingMemo }: Mem
     }
   }, [formData, isOpen, saveDraft])
 
+  const handleCloseIntent = useCallback(() => {
+    if (isSubmitting) return
+    if (isDirty(formData, initialDataRef.current)) {
+      setShowDiscardConfirm(true)
+    } else {
+      clearDraft()
+      onClose()
+    }
+  }, [isSubmitting, formData, clearDraft, onClose])
+
   // 스크롤 잠금 + Escape
   useEffect(() => {
     if (!isOpen) return
@@ -153,16 +163,6 @@ export default function MemoForm({ isOpen, onClose, onSubmit, editingMemo }: Mem
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isOpen, isSubmitting, showDiscardConfirm])
-
-  const handleCloseIntent = useCallback(() => {
-    if (isSubmitting) return
-    if (isDirty(formData, initialDataRef.current)) {
-      setShowDiscardConfirm(true)
-    } else {
-      clearDraft()
-      onClose()
-    }
-  }, [isSubmitting, formData, clearDraft, onClose])
 
   const handleConfirmDiscard = () => {
     clearDraft()

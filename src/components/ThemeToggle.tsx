@@ -35,10 +35,10 @@ export default function ThemeToggle() {
   const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
-    setMounted(true)
     const t = loadTheme()
-    setTheme(t)
     applyTheme(t)
+    setTheme(t)
+    setMounted(true)
   }, [])
 
   // 시스템 테마 변경 감지

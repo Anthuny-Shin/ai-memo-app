@@ -1,16 +1,14 @@
-import { dirname } from 'path'
-import { fileURLToPath } from 'url'
-import { FlatCompat } from '@eslint/eslintrc'
-
-const __filename = fileURLToPath(import.meta.url)
-const __dirname = dirname(__filename)
-
-const compat = new FlatCompat({
-  baseDirectory: __dirname,
-})
+import nextConfig from 'eslint-config-next'
 
 const eslintConfig = [
-  ...compat.extends('next/core-web-vitals', 'next/typescript'),
+  ...nextConfig,
+  {
+    rules: {
+      // React Compiler 규칙: hydration 감지(setMounted), 폼 초기화, 상태 리셋 등
+      // 정당한 패턴에서도 발생하므로 warning으로 하향
+      'react-hooks/set-state-in-effect': 'warn',
+    },
+  },
 ]
 
 export default eslintConfig
