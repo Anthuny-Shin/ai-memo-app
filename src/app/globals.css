@@ -1,0 +1,139 @@
+@import 'tailwindcss';
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ─── Light theme tokens ─────────────────────────────────────── */
+:root {
+  --background:      #FAF8F4;
+  --surface:         #FFFFFF;
+  --surface-muted:   #F3EFE7;
+  --foreground:      #2C2A26;
+  --foreground-muted:#6B6862;
+  --border:          #E8E3DA;
+  --accent:          #C97B5D;
+  --accent-hover:    #B86A4C;
+  --ring:            rgba(201, 123, 93, 0.35);
+
+  /* Category: personal (blue-lavender) */
+  --cat-personal-bg: #E8EEFF;
+  --cat-personal-fg: #3B5BDB;
+  --cat-personal-bar:#6C82D8;
+
+  /* Category: work (sage green) */
+  --cat-work-bg:     #E6F4EE;
+  --cat-work-fg:     #2D7A4F;
+  --cat-work-bar:    #4DAA72;
+
+  /* Category: study (warm purple) */
+  --cat-study-bg:    #F0E8F8;
+  --cat-study-fg:    #7B3FA8;
+  --cat-study-bar:   #9D62C8;
+
+  /* Category: idea (golden yellow) */
+  --cat-idea-bg:     #FFF5D6;
+  --cat-idea-fg:     #A0720A;
+  --cat-idea-bar:    #D4A017;
+
+  /* Category: other (warm gray) */
+  --cat-other-bg:    #F0EDE8;
+  --cat-other-fg:    #6B6862;
+  --cat-other-bar:   #9C9890;
+}
+
+/* ─── Dark theme tokens ──────────────────────────────────────── */
+.dark {
+  --background:      #1B1A18;
+  --surface:         #252320;
+  --surface-muted:   #2E2B27;
+  --foreground:      #EFECE6;
+  --foreground-muted:#A39E96;
+  --border:          #3A3733;
+  --accent:          #E89977;
+  --accent-hover:    #F2A988;
+  --ring:            rgba(232, 153, 119, 0.35);
+
+  --cat-personal-bg: #1E2540;
+  --cat-personal-fg: #8FA5F5;
+  --cat-personal-bar:#6C82D8;
+
+  --cat-work-bg:     #182B21;
+  --cat-work-fg:     #6DC995;
+  --cat-work-bar:    #4DAA72;
+
+  --cat-study-bg:    #241430;
+  --cat-study-fg:    #C48FE8;
+  --cat-study-bar:   #9D62C8;
+
+  --cat-idea-bg:     #2A2008;
+  --cat-idea-fg:     #F0C040;
+  --cat-idea-bar:    #D4A017;
+
+  --cat-other-bg:    #26231F;
+  --cat-other-fg:    #BCB7B0;
+  --cat-other-bar:   #9C9890;
+}
+
+/* ─── Tailwind 4 theme mapping ───────────────────────────────── */
+@theme inline {
+  --color-background:      var(--background);
+  --color-surface:         var(--surface);
+  --color-surface-muted:   var(--surface-muted);
+  --color-foreground:      var(--foreground);
+  --color-foreground-muted:var(--foreground-muted);
+  --color-border:          var(--border);
+  --color-accent:          var(--accent);
+  --color-accent-hover:    var(--accent-hover);
+
+  --font-sans: 'Pretendard Variable', 'Pretendard', -apple-system, BlinkMacSystemFont,
+    system-ui, Roboto, sans-serif;
+  --font-mono: var(--font-geist-mono), 'Fira Code', monospace;
+}
+
+/* ─── Base styles ─────────────────────────────────────────────── */
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+}
+
+/* ─── Custom utilities ───────────────────────────────────────── */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Focus ring utility using accent ring variable */
+.focus-ring:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--ring);
+}
+
+/* Card group hover: reveal action buttons */
+.memo-card:hover .memo-actions,
+.memo-card:focus-within .memo-actions {
+  opacity: 1;
+}
+
+/* Smooth scrollbar in dark mode */
+.dark {
+  color-scheme: dark;
+}
+
+/* prefers-reduced-motion: 모든 애니메이션/트랜지션 비활성화 */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

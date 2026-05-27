@@ -1,0 +1,25 @@
+# ���� ���⹰
+.next/
+out/
+build/
+
+# ������
+node_modules/
+
+# ȯ�� ���� (�ΰ� ����)
+.env.local
+.env*.local
+
+# �׽�Ʈ ��� / ����Ʈ
+coverage/
+playwright-report/
+test-results/
+
+# �ڵ� ���� ����
+package-lock.json
+next-env.d.ts
+*.tsbuildinfo
+
+# �ý��� ����
+.DS_Store
+*.pem
